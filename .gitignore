@@ -1,0 +1,35 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/deploymentTargetSelector.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+.kotlin
+
+# Logs
+*.log
+
+# Android Studio / IntelliJ
+*.ipr
+*.iws
+*.iml
+.idea/
+
+# Keystore files (if you add them later)
+*.jks
+*.keystore
+
+# Google Services (if used)
+# google-services.json
+
+# Profiling and captures
+*.hprof
