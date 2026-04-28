@@ -47,6 +47,15 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation("androidx.compose.material:material-icons-extended:1.7.0")
     implementation("androidx.navigation:navigation-compose:2.9.8")
+
+    val cameraxVersion = "1.3.4"
+    implementation("androidx.camera:camera-core:$cameraxVersion")
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    implementation("com.google.accompanist:accompanist-permissions:0.34.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
