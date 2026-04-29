@@ -1,5 +1,6 @@
 package com.example.grzyboneo.data.repository
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import com.example.grzyboneo.data.ml.MushroomModel
@@ -28,7 +29,8 @@ class ModelRepository(private val context: Context) {
         val confidences = expLogits.map { (it / sumExp) }
 
         val resultList = confidences.mapIndexed { index, confidence ->
-            labels.getOrElse(index) { "Unknown" } to confidence
+            val scientificName = labels.getOrElse(index) { "Unknown" }
+            getLocalizedName(scientificName) to confidence
         }
 
         val top3 = resultList.sortedByDescending { it.second }.take(3)
@@ -49,6 +51,16 @@ class ModelRepository(private val context: Context) {
             Log.e("ModelRepository", "Failed to load labels: ${e.message}")
             listOf("Error loading labels")
         }
+    }
+
+    // TODO Will be fixed later (replace config.json with db)
+    @SuppressLint("DiscouragedApi")
+    private fun getLocalizedName(scientificName: String): String{
+        val resId = context.resources.getIdentifier(
+            scientificName,
+            "string",
+            context.packageName)
+        return if (resId != 0) context.getString(resId) else scientificName
     }
 
     fun close() {
