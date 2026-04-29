@@ -5,6 +5,7 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -30,9 +31,10 @@ fun NavGraph(navController: NavHostController){
             HomeScreen {navController.navigate("camera")}
         }
         composable("camera") {
-            val repository = ModelRepository()
+            val context = androidx.compose.ui.platform.LocalContext.current.applicationContext
             val viewModel: CameraViewModel = viewModel(
                 factory = viewModelFactory{
+                    val repository = ModelRepository(context)
                     initializer { CameraViewModel(repository) }
                 }
             )

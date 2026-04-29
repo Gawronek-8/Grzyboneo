@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.grzyboneo.data.repository.ModelRepository
 import com.example.grzyboneo.domain.model.Predictions
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -20,6 +21,7 @@ class CameraViewModel(private val repository: ModelRepository) : ViewModel() {
     fun onFrameCaptured(bitmap: android.graphics.Bitmap) {
 
         if (isAnalyzing) return
+        isAnalyzing = true
 
         viewModelScope.launch {
             val result = withContext(Dispatchers.Default){
@@ -29,4 +31,12 @@ class CameraViewModel(private val repository: ModelRepository) : ViewModel() {
             isAnalyzing = false
         }
     }
+
+    override fun onCleared() {
+        viewModelScope.cancel()
+        repository.close()
+        super.onCleared()
+
+    }
+
 }

@@ -14,22 +14,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -43,20 +34,16 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.AndroidFont
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.grzyboneo.domain.model.Predictions
-import com.example.grzyboneo.ui.screens.home.CameraButton
-import com.example.grzyboneo.ui.screens.home.Greeting
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import org.intellij.lang.annotations.JdkConstants
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -175,31 +162,31 @@ fun CameraOverlay(
 ){
     Box(modifier = Modifier.fillMaxSize()) {
 
-        Canvas(modifier = Modifier.fillMaxSize()) {
-            val strokeWidth = 3.dp.toPx()
-            val boxSize = size.minDimension * 0.6f
+//        Canvas(modifier = Modifier.fillMaxSize()) {
+//            val strokeWidth = 3.dp.toPx()
+//            val boxSize = size.minDimension * 0.6f
+//
+//            drawRect(
+//                color = Color.White.copy(alpha = 0.5f),
+//                topLeft = Offset(
+//                    x = (size.width - boxSize) / 2,
+//                    y = (size.height - boxSize) / 2
+//                ),
+//                size = Size(boxSize, boxSize),
+//                style = Stroke(
+//                    width = strokeWidth
+//                )
+//            )
+//        }
 
-            drawRect(
-                color = Color.White.copy(alpha = 0.5f),
-                topLeft = Offset(
-                    x = (size.width - boxSize) / 2,
-                    y = (size.height - boxSize) / 2
-                ),
-                size = Size(boxSize, boxSize),
-                style = Stroke(
-                    width = strokeWidth
-                )
-            )
-        }
-
-        Text(
-            text = "ALIGN MUSHROOM IN FRAME",
-            style = MaterialTheme.typography.labelMedium,
-            color = Color.White,
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 64.dp)
-        )
+//        Text(
+//            text = "ALIGN MUSHROOM IN FRAME",
+//            style = MaterialTheme.typography.labelMedium,
+//            color = Color.White,
+//            modifier = Modifier
+//                .align(Alignment.TopCenter)
+//                .padding(top = 64.dp)
+//        )
 
         PredictionsTable(
             predictions = predictions,
